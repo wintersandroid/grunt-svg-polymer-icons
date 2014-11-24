@@ -33,12 +33,12 @@ grunt.initConfig({
     options: {
       prefix : 'icon-', // This will prefix each ID
       svg: {
-        iconWidth : 40, // optional set the iconWidth property on the element
-        iconHeight: 35, // option set the iconWidth property on the element
-        iconSize: 30, // optional, set the iconSize property on the element.
 
       },
       polymer: {
+        iconWidth : 40, // optional set the iconWidth property on the element.
+        iconHeight: 35, // option set the iconWidth property on the element.
+        iconSize: 30, // optional, set the iconSize property on the element.
         iconsetImport: "/shared_components/core-iconset-svg.html", // the iconset import
         iconsetElement: "core-iconset-svg" // the element to extend.
 
@@ -144,7 +144,7 @@ Original symbols are placed exactly in the middle of the fixed-size viewBox of t
 Configuration reference and default values if `true` is passed:
 ```js
 grunt.initConfig({
-  svgstore: {
+  svgpolymericon: {
     options: {
       fixedSizeVersion: {
         width: 50,
@@ -176,7 +176,7 @@ This example will merge all elements from the `svgs` folder into the `<defs>`-Bl
 
 ```js
 grunt.initConfig({
-  svgstore: {
+  svgpolymericon: {
     options: {},
     default : {
       files: {
@@ -189,7 +189,7 @@ grunt.initConfig({
 
 ## Supplemental Features
 
-There are some hidden features available in grunt-svgstore:
+There are some hidden features available in grunt-svg-polymer-icon:
 
   * Use the `preserve--` prefix (in the source SVG), for any attributes that should be forced to remain in the resulting SVG. For example, `preserve--stroke` would result in just `stroke` in the resulting SVG. This happens whether or not you ask for that attribute to be *cleaned* via `cleanup`.
   * Using the value of `currentColor` on any property with the key `fill`, will result in that property remaining in the resulting SVG (regardless of whether or not you ask for `fill` to be *cleaned* via `cleanup`). This can be used to achieve *accent color* for you SVG instances by defining the font color on a parent element via the CSS `color` property.

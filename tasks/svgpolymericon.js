@@ -81,6 +81,7 @@ module.exports = function(grunt) {
       fixedSizeVersion: false
     });
 
+
     var cleanupAttributes = [];
     if (options.cleanup && typeof options.cleanup === 'boolean') {
       // For backwards compatibility (introduced in 0.2.6).
@@ -89,11 +90,13 @@ module.exports = function(grunt) {
       cleanupAttributes = options.cleanup;
     }
 
+
     this.files.forEach(function(file) {
       var $resultDocument = cheerio.load('<' + options.polymer.iconsetElement + '></' + options.polymer.iconsetElement + '>', {
           xmlMode: true
         }),
         $resultSvg = $resultDocument(options.polymer.iconsetElement),
+
         //$resultDefs = $resultDocument('defs').first(),
         iconNameViewBoxArray = []; // Used to store information of all icons that are added
       // { name : '' }
@@ -105,8 +108,8 @@ module.exports = function(grunt) {
         }
         options.polymer.viewBox = '0 0 ' + options.polymer.iconWidth + ' ' + options.polymer.iconHeight;
       } else {
-        if (options.svg.iconSize) {
-          $resultSvg.attr('iconSize', options.svg.iconSize);
+        if (options.polymer.iconSize) {
+          $resultSvg.attr('iconSize', options.polymer.iconSize);
           options.polymer.viewBox = '0 0 ' + options.polymer.iconSize + ' ' + options.polymer.iconSize;
         }
       }
@@ -127,6 +130,7 @@ module.exports = function(grunt) {
           normalizeWhitespace: true,
           xmlMode: true
         });
+
 
         // Remove empty g elements
         $('g').each(function() {
@@ -257,10 +261,7 @@ module.exports = function(grunt) {
 
         // Merge in symbol attributes from option
         for (var attr in options.symbol) {
-          if (attr != 'iconWidth' && attr != 'iconHeight' && attr != 'iconSize') {
-            $symbol.attr(attr, options.symbol[attr]);
-          }
-
+          $symbol.attr(attr, options.symbol[attr]);
         }
 
         // Add title and desc (if provided)
@@ -306,15 +307,17 @@ module.exports = function(grunt) {
         // $res('pattern').each(addToDefs);
 
         // Append <symbol> to resulting SVG
+
         $resultSvg.append($res.html());
 
-        // Add icon to the demo.html array
-        if (!!options.includedemo) {
-          iconNameViewBoxArray.push({
-            name: graphicId,
-            title: title
-          });
-        }
+
+        // // Add icon to the demo.html array
+        // if (!!options.includedemo) {
+        //   iconNameViewBoxArray.push({
+        //     name: graphicId,
+        //     title: title
+        //   });
+        // }
 
         if (viewBox && !!options.fixedSizeVersion) {
           var fixedWidth = options.fixedSizeVersion.width || 50;
@@ -359,11 +362,11 @@ module.exports = function(grunt) {
             ].join(' '));
 
           $resultSvg.append($resFixed.html());
-          if (options.includedemo) {
-            iconNameViewBoxArray.push({
-              name: fixedId
-            });
-          }
+          // if (options.includedemo) {
+          //   iconNameViewBoxArray.push({
+          //     name: fixedId
+          //   });
+          // }
         }
       });
 
@@ -377,6 +380,7 @@ module.exports = function(grunt) {
 
       var result = options.formatting ? beautify($resultDocument.html(), options.formatting) : $resultDocument.html();
       result = '<link rel=\"import\" href=\"' + options.polymer.iconsetImport + '\"/>\n\n' + result;
+
 
       grunt.file.write(file.dest, result);
 
