@@ -33,14 +33,13 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     svgstore: {
       defaults: {
-        options: {
-        },
+        options: {},
         files: {
           'tmp/default_options.svg': ['test/fixtures/codepen.svg']
         },
       },
 
-      prefix: {
+      prefix:  {
         options: {
           prefix: 'icon-'
         },
@@ -49,10 +48,10 @@ module.exports = function(grunt) {
         }
       },
 
-      svgattr: {
+      svgattr:  {
         options: {
           svg: {
-            viewBox : '0 0 100 100'
+            viewBox: '0 0 100 100'
           }
         },
         files: {
@@ -60,8 +59,8 @@ module.exports = function(grunt) {
         }
       },
 
-      symbolattr: {
-        options:{
+      symbolattr:  {
+        options: {
           symbol: {
             preserveAspectRatio: 'xMinYMin slice'
           }
@@ -73,8 +72,8 @@ module.exports = function(grunt) {
 
       formatting: {
         options: {
-          formatting : {
-            indent_size : 2
+          formatting: {
+            indent_size: 2
           }
         },
         files: {
@@ -83,22 +82,22 @@ module.exports = function(grunt) {
       },
 
       withurlref: {
-        options:{},
+        options: {},
         files: {
           'tmp/withurlref.svg': ['test/fixtures/element.svg']
         }
       },
 
       nestedsymboleid: {
-        options:{},
+        options: {},
         files: {
           'tmp/nestedsymbol.svg': ['test/fixtures/nestedsymbol.svg']
         }
       },
 
       includedemo: {
-        options:{
-          includedemo : true
+        options: {
+          includedemo: true
         },
         files: {
           'tmp/includedemo.svg': ['test/fixtures/*.svg', 'test/fixtures/animation/anim.svg']
@@ -106,7 +105,7 @@ module.exports = function(grunt) {
       },
 
       cutNameAfterFirstDot: {
-        options:{},
+        options: {},
         files: {
           'tmp/cutnameafterfirstdot.svg': ['test/fixtures/naming/name.min.svg']
         }
@@ -129,7 +128,7 @@ module.exports = function(grunt) {
           'tmp/cleanup_with_currentColor.svg': ['test/fixtures/cleanup_with_currentColor.svg']
         }
       },
-      
+
       preserveattribute: {
         options: {
           cleanup: ['fill', 'stroke', 'imafake']
@@ -201,35 +200,37 @@ module.exports = function(grunt) {
         }
       },
 
-      withCustomTemplate:{
+      withCustomTemplate: {
         options: {
-          includedemo : multiline.stripIndent(function(){/*
-                <!doctype html>
-                <html>
-                  <head>
-                    <style>
-                      svg{
-                       width:50px;
-                       height:50px;
-                       fill:black !important;
-                      }
-                    </style>
-                  <head>
-                  <body>
-                    {{{svg}}}
+          includedemo: multiline.stripIndent(function() {
+            /*
+                            <!doctype html>
+                            <html>
+                              <head>
+                                <style>
+                                  svg{
+                                   width:50px;
+                                   height:50px;
+                                   fill:black !important;
+                                  }
+                                </style>
+                              <head>
+                              <body>
+                                {{{svg}}}
 
-                    {{#each icons}}
-                    <div>
-                      <svg>
-                        <use xlink:href="#{{name}}" />
-                      </svg>
-                      <div>{{title}}</div>
-                    </div>
-                    {{/each}}
+                                {{#each icons}}
+                                <div>
+                                  <svg>
+                                    <use xlink:href="#{{name}}" />
+                                  </svg>
+                                  <div>{{title}}</div>
+                                </div>
+                                {{/each}}
 
-                  </body>
-                </html>
-          */})
+                              </body>
+                            </html>
+                      */
+          })
         },
         files: {
           'tmp/customTemplate.svg': ['test/fixtures/animation/anim.svg']
@@ -238,7 +239,7 @@ module.exports = function(grunt) {
 
       withCustomTemplateFunction: {
         options: {
-          includedemo : function(){}
+          includedemo: function() {}
         },
         files: {
           'tmp/customTemplateFunction.svg': ['test/fixtures/animation/anim.svg']
@@ -265,18 +266,18 @@ module.exports = function(grunt) {
   });
 
   // Actually load this plugin's task(s).
-  grunt.loadTasks('tasks');
+  //grunt.loadTasks('tasks');
 
   // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  //grunt.loadNpmTasks('grunt-contrib-jshint');
+  //grunt.loadNpmTasks('grunt-contrib-clean');
+  //  grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'svgstore', 'nodeunit']);
+  //grunt.registerTask('test', ['clean', 'svgstore', 'nodeunit']);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'test']);
+  //  grunt.registerTask('default', ['jshint', 'test']);
 
 };

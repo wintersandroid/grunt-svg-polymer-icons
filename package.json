@@ -1,25 +1,23 @@
 {
-  "name": "grunt-svgstore",
-  "description": "Merge SVGs from a folder.",
-  "version": "0.4.1",
-  "homepage": "https://github.com/FWeinb/grunt-svgstore",
+  "name": "grunt-svg-polymer-icons",
+  "description": "Merge SVGs from a folder into a polymer icon set.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/wintersandroid/grunt-svg-polymer-icons",
   "author": {
-    "name": "Fabrice Weinberg",
-    "email": "Fabrice@weinberg.me"
+    "name": "Mathew Winters",
+    "email": "mathew_winters@trimble.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/FWeinb/grunt-svgstore.git"
+    "url": "git@github.com:wintersandroid/grunt-svg-polymer-icons.git"
   },
   "bugs": {
-    "url": "https://github.com/FWeinb/grunt-svgstore/issues"
+    "url": "https://github.com/wintersandroid/grunt-svg-polymer-icons/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/FWeinb/grunt-svgstore/blob/master/LICENSE-MIT"
-    }
-  ],
+  "licenses": [{
+    "type": "MIT",
+    "url": "https://github.com/wintersandroid/grunt-svg-polymer-icons/blob/master/LICENSE-MIT"
+  }],
   "engines": {
     "node": ">= 0.8.0"
   },
@@ -46,7 +44,7 @@
   "keywords": [
     "svg",
     "icon",
-    "sprite",
+    "polymer",
     "gruntplugin"
   ]
 }
