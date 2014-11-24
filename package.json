@@ -1,7 +1,7 @@
 {
   "name": "grunt-svg-polymer-icons",
   "description": "Merge SVGs from a folder into a polymer icon set.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/wintersandroid/grunt-svg-polymer-icons",
   "author": {
     "name": "Mathew Winters",

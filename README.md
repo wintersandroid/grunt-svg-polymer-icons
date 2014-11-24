@@ -1,4 +1,4 @@
-# grunt-svgstore
+# grunt-svg-polymer-icons
 
 > Merge SVGs from a folder into a polymer core-svg-icons element.
 
@@ -78,7 +78,7 @@ will result in:
 [...]
 ```
 
-#### options.symbol 
+#### options.symbol
 Type: `Object`  
 Default value: `{}`  
 

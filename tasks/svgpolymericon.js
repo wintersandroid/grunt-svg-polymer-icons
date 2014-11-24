@@ -97,25 +97,20 @@ module.exports = function(grunt) {
         //$resultDefs = $resultDocument('defs').first(),
         iconNameViewBoxArray = []; // Used to store information of all icons that are added
       // { name : '' }
-      if (options.svg.iconWidth) {
-        $resultSvg.attr('iconWidth', options.svg.iconWidth);
+      if (options.polymer.iconWidth) {
+        $resultSvg.attr('iconWidth', options.polymer.iconWidth);
 
-        if (options.svg.iconHeight) {
-          $resultSvg.attr('iconHeight', options.svg.iconHeight);
+        if (options.polymer.iconHeight) {
+          $resultSvg.attr('iconHeight', options.polymer.iconHeight);
         }
-        options.svg.viewBox = '0 0 ' + options.svg.iconWidth + ' ' + options.svg.iconHeight;
+        options.polymer.viewBox = '0 0 ' + options.polymer.iconWidth + ' ' + options.polymer.iconHeight;
       } else {
         if (options.svg.iconSize) {
           $resultSvg.attr('iconSize', options.svg.iconSize);
-          options.svg.viewBox = '0 0 ' + options.svg.iconSize + ' ' + options.svg.iconSize;
+          options.polymer.viewBox = '0 0 ' + options.polymer.iconSize + ' ' + options.polymer.iconSize;
         }
       }
 
-
-      // Merge in SVG attributes from option
-      // for (var attr in options.svg) {
-      //   $resultSvg.attr(attr, options.svg[attr]);
-      // }
 
       file.src.filter(function(filepath) {
         if (!grunt.file.exists(filepath)) {
