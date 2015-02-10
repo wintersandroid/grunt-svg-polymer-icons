@@ -78,7 +78,10 @@ module.exports = function(grunt) {
       inheritviewbox: false,
       cleanupdefs: false,
       convertNameToId: defaultConvertNameToId,
-      fixedSizeVersion: false
+      fixedSizeVersion: false,
+      externalDefs: false,
+      includeTitleElement: true,
+      preserveDescElement: true
     });
 
 
@@ -265,11 +268,11 @@ module.exports = function(grunt) {
         }
 
         // Add title and desc (if provided)
-        if (desc) {
+        if (desc && options.preserveDescElement) {
           $symbol.prepend('<desc>' + desc + '</desc>');
         }
 
-        if (title) {
+        if (title && options.includeTitleElement) {
           $symbol.prepend('<title>' + title + '</title>');
         }
 
@@ -369,6 +372,27 @@ module.exports = function(grunt) {
           // }
         }
       });
+
+      if(options.externalDefs) {
+        var filepath = options.externalDefs;
+
+        if (!grunt.file.exists(filepath)) {
+          grunt.log.error('File "' + chalk.red(filepath) + '" not found.');
+          return false;
+        }
+
+        var $file = cheerio.load(grunt.file.read(filepath), {
+              xmlMode: true,
+              normalizeWhitespace: true
+            }),
+            defs = $file('defs').html();
+
+        if (defs === null) {
+          grunt.log.warn('File "' + chalk.yellow(filepath) + '" contains no defs.');
+        } else {
+          $resultDefs.append(defs);
+        }
+      }
 
       // Remove defs block if empty
       // if ($resultDefs.html().trim() === '') {
